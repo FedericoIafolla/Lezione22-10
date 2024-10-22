@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import java.time.format.DateTimeFormatter;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,9 +66,9 @@ public class PizzeriaMenuApplication {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 			String dataFormattata = ordine.getOraAcquisizione().format(formatter);
 
-			logger.info("Ordine creato: Numero Ordine: {}, Stato: {}, Coperti: {}, Ora Acquisizione: {}, Importo Totale: %.2f€",
+			logger.info("Ordine creato: Numero Ordine: {}, Stato: {}, Coperti: {}, Ora Acquisizione: {}, Importo Totale: {}€",
 					ordine.getNumeroOrdine(), ordine.getStato(), ordine.getNumeroCoperti(),
-					dataFormattata, ordine.getImportoTotale());
+					dataFormattata, String.format("%.2f", ordine.getImportoTotale()));
 
 			System.out.println("\n**********************************");
 			System.out.printf("%-20s: %d%n", "Numero Ordine", ordine.getNumeroOrdine());
